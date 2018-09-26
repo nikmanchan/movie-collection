@@ -1,7 +1,7 @@
 // requires
 const express = require('express');
 const app = express();
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-Parser');
 
 // globals
 const PORT = process.env.PORT || 5000;
