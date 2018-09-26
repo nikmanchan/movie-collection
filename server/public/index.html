@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/angular.js"></script>
+    <script src="vendors/angular-route.js"></script>
+    <script src="vendors/angular-material.min.js"></script>
     <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="styles/angular-material.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <title>Movie Collection</title>
 </head>
-<body>
+<body ng-app="MovieApp">
     <header>
         <h1>Cinema Central</h1>
     </header>
     <nav>
+        <a href="#!/">Home</a> 
         <a href="#!/movies">Add Entry</a> 
         <a href="#!/genres">Manage Genres</a> 
     </nav>
