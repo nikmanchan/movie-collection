@@ -20,7 +20,7 @@ movieApp.controller('MoviesController', ['$http', function ($http) {
 
     vm.addMovie = function () {
         console.log('in addMovie!');
-        $http.post({
+        $http({
             method: 'POST',
             url: '/movies',
             data: vm.newMovie

@@ -4,10 +4,11 @@
 
 <div>
     <form action="">
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="Genre">
-        <input type="text" placeholder="Release Date">
-        <input type="text" placeholder="Run Time">
+        <input type="text" placeholder="Title" ng-model="vm.newMovie.title">
+        <input type="text" placeholder="Genre" ng-model="vm.newMovie.genre">
+        <input type="text" placeholder="Release Date" ng-model="vm.newMovie.release_date">
+        <input type="text" placeholder="Image URL" ng-model="vm.newMovie.image_path">
+        <input type="text" placeholder="Run Time" ng-model="vm.newMovie.run_time">
         <input ng-click="vm.addMovie()"type="submit" placeholder="Submit">
     </form>
 </div>
