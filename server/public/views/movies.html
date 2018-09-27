@@ -1,5 +1,5 @@
 <div>
-    <h2>Add Movie</h2>
+<h2>Add Movie</h2>
 </div>
 
 <div>
@@ -11,4 +11,25 @@
         <input type="text" placeholder="Run Time" ng-model="vm.newMovie.run_time">
         <input ng-click="vm.addMovie()"type="submit" placeholder="Submit">
     </form>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>Image</th>
+            <th>Run Time</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in vm.movieList">
+                <td>{{movie.title}}</td>
+                <td>{{movie.genre}}</td>
+                <td>{{movie.release_date}}</td>
+                <td>{{movie.image_path}}</td>
+                <td>{{movie.run_time}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
