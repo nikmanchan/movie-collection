@@ -22,22 +22,17 @@ router.post('/', (req,res) => {
     });
 }); // end movies POST
 
-
-// router.post('/', (req, res) => {
-
-
-//     pool.query(`INSERT INTO "listings" 
-//                 ("cost", "sqft", "type", "city", "image_path")
-//                 VALUES ($1, $2, $3, $4, $5);`, [req.body.cost,
-//                 req.body.sqft, req.body.type, req.body.city, req.body.image_path])
-//         .then(() => {
-//             console.log('house added!');
-//             res.sendStatus(201);
-//         }).catch((error) => {
-//             console.log('error with SQL insert for listings', error);
-//             res.sendStatus(500);
-//         });
-        
-// });
+router.get('/', (req,res) => {
+    console.log('in GET movies from SQL!');
+    
+    pool.query(`SELECT * FROM "movies"`)
+    .then((results) => {
+    console.log('got movies!', results.rows);
+    res.send(results.rows);
+    }).catch((error)=> {
+        console.log('error with GET movies from DB:', error);
+        res.sendStatus(500);
+    });
+}); // end movies GET
 
 module.exports = router;
