@@ -35,4 +35,16 @@ router.get('/', (req,res) => {
     });
 }); // end movies GET
 
+router.delete('/', (req, res)=>{
+    console.log('in DELETE movie in SQL');
+    // let id = req.params.id
+    pool.query(`DELETE from "movies" WHERE "id" = $1;`, [req.query.id])
+    .then( (results)=>{
+        console.log('delete success!');
+        res.sendStatus(200);
+    }).catch( (error)=> {
+        console.log('error deleting movie from database:', error);
+    });  
+}); // end router.delete
+
 module.exports = router;
