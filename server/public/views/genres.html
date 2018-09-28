@@ -1,1 +1,27 @@
-<h2>Genres</h2>
+<div>
+    <h2>Add Genres</h2>
+</div>
+
+<div>
+    <form action="">
+        <input type="text" placeholder="ie. Horror">
+        <input type="submit">
+    </form>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <th>Genre</th>
+            <th>Total Movies</th>
+            <th>Modify</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="genre in vm.genreList">
+                <td>{{genre.name}}</td>
+                <td></td>
+                <td><button ng-click="vm.deleteGenre(genre)">Delete</button><button>Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
