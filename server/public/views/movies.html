@@ -3,14 +3,19 @@
 </div>
 
 <div>
-    <form action="">
+    <md-form-field>
         <input type="text" placeholder="Title" ng-model="vm.newMovie.title">
-        <input type="text" placeholder="Genre" ng-model="vm.newMovie.genre">
+        <!-- <md-select placeholder="Genre" [(value)]="selected" ng-model="vm.genreList.id" ng-options="vm.genre.id as vm.genre.name for genre in vm.genreList">
+            <md-option ng-value="genre.id">{{genre.name}}</md-option>
+        </md-select> -->
+        <select ng-model="vm.newMovie.genre_id" 
+        ng-options="genre.id as genre.name for genre in vm.genreList">
+        <select>
         <input type="text" placeholder="Release Date" ng-model="vm.newMovie.release_date">
         <input type="text" placeholder="Image URL" ng-model="vm.newMovie.image_path">
         <input type="text" placeholder="Run Time" ng-model="vm.newMovie.run_time">
         <input ng-click="vm.addMovie()"type="submit" placeholder="Submit">
-    </form>
+    </md-form-field>
 </div>
 
 <div>
@@ -25,9 +30,9 @@
         <tbody>
             <tr ng-repeat="movie in vm.movieList">
                 <td>{{movie.title}}</td>
-                <td>{{movie.genre}}</td>
+                <td class="capitalize">{{movie.genre}}</td>
                 <td>{{movie.release_date}}</td>
-                <td>{{movie.image_path}}</td>
+                <td><img ng-src="{{movie.image_path}}"/></td>
                 <td>{{movie.run_time}}</td>
                 <td><button ng-click="vm.deleteMovie(movie)">Delete</button></td>
             </tr>

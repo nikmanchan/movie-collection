@@ -7,12 +7,12 @@ router.post('/', (req,res) => {
     console.log('Posting movie to SQL!');
     
     pool.query(`INSERT INTO "movies"
-    ("title", "genre", "release_date", "image_path", "genre_id", "run_time")
-    VALUES ($1, $2, $3, $4, $5, $6);`, 
+    ("title", "genre_id", "release_date", "image_path", "run_time")
+    VALUES ($1, $2, $3, $4, $5);`, 
         [req.body.title, 
-        req.body.genre, 
+        req.body.genre_id, 
         req.body.release_date, req.body.image_path, 
-        req.body.genre_id, req.body.run_time])
+        req.body.run_time])
     .then(() => {
     console.log('movie added!');
     res.sendStatus(200);
@@ -25,7 +25,9 @@ router.post('/', (req,res) => {
 router.get('/', (req,res) => {
     console.log('in GET movies from SQL!');
     
-    pool.query(`SELECT * FROM "movies"`)
+    pool.query(`SELECT "movies"."title", "movies"."release_date", "movies"."image_path", "movies"."genre_id", 
+    "movies"."run_time", "genres"."name" AS "genre" FROM "movies"
+    JOIN "genres" ON "movies"."genre_id" = "genres"."id";`)
     .then((results) => {
     console.log('got movies!', results.rows);
     res.send(results.rows);
