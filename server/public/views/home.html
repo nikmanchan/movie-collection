@@ -2,24 +2,29 @@
     <h2>Home</h2>
 </div>
 
-<div>
-        <table>
-            <thead>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Release Date</th>
-                <th>Image</th>
-                <th>Run Time</th>
-            </thead>
-            <tbody>
-                <tr ng-repeat="movie in vm.movieList">
-                    <td>{{movie.title}}</td>
-                    <td class="capitalize">{{movie.genre}}</td>
-                    <td>{{movie.release_date}}</td>
-                    <td><img ng-src="{{movie.image_path}}"/></td>
-                    <td>{{movie.run_time}}</td>
-                    <td><button ng-click="vm.deleteMovie(movie)">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+<div layout>
+    <md-card ng-repeat="movie in vm.movieList" style="width:400px;height:800px;">
+            <img ng-src="{{movie.image_path}}" class="md-card-image" alt="image caption" style="width:400px;height:450px;" text-align="center;">
+        <md-card-title style="height:40px;">
+            <md-card-title-text style="height:40px;">
+            <span class="md-headline">{{movie.title}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p class="capitalize">Genre: {{movie.genre}}</p>
+            <p>
+                Run Time: {{movie.run_time}}
+            </p>
+            <p class="capitalize">
+                {{movie.genre}}
+            </p>
+            <p>
+                Release Date: {{movie.release_date}}
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="start center">
+            <md-button>Edit</md-button>
+            <md-button ng-click="vm.deleteMovie(movie)">delete</md-button>
+        <md-card-icon-actions>
+    </md-card>
     </div>

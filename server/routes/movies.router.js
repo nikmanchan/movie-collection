@@ -26,7 +26,7 @@ router.get('/', (req,res) => {
     console.log('in GET movies from SQL!');
     
     pool.query(`SELECT "movies"."title", "movies"."release_date", "movies"."image_path", "movies"."genre_id", 
-    "movies"."run_time", "genres"."name" AS "genre" FROM "movies"
+    "movies"."run_time", "movies"."id", "genres"."name" AS "genre" FROM "movies"
     JOIN "genres" ON "movies"."genre_id" = "genres"."id";`)
     .then((results) => {
     console.log('got movies!', results.rows);
@@ -46,6 +46,18 @@ router.delete('/', (req, res)=>{
         res.sendStatus(200);
     }).catch( (error)=> {
         console.log('error deleting movie from database:', error);
+    });  
+}); // end router.delete
+
+router.delete('/', (req, res)=>{
+    console.log('in DELETE genre in SQL');
+    // let id = req.params.id
+    pool.query(`DELETE from "movies" WHERE "id" = $1;`, [req.query.id])
+    .then( (results)=>{
+        console.log('delete success!');
+        res.sendStatus(200);
+    }).catch( (error)=> {
+        console.log('error deleting genre from database:', error);
     });  
 }); // end router.delete
 
